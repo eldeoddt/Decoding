@@ -6,6 +6,7 @@ function init() {
     document.getElementById('clearAll').addEventListener('click', clearAll);
     document.querySelector('ul').addEventListener('click', deleteOrCheck);
     document.querySelector('ul').addEventListener('click', delTodo);
+    document.querySelector('ul').addEventListener('click', checkToDo);
 }
     
 function deleteOrCheck(e) {
@@ -27,10 +28,10 @@ function addTodo(e) {    //새로운 할 일 추가
     }
 }
 
-function addTask(value) {
+function addTask(value) {    //할 일 추가 기능
     let ul = document.querySelector('ul');
     let li = document.createElement('li');
-    li.innerHTML = `<button class="del">X</button><input type="checkbox"><label id="val">${value}</label>`;
+    li.innerHTML = `<button class="del">x</button><input type="checkbox"><label id="val">${value}</label>`;
     ul.appendChild(li); //리스트 내용 추가
 }
 
@@ -41,11 +42,11 @@ function delTodo(e) {
         parentNode.removeChild(remove);
 }
 
-function checkToDo(e) {    //체크박스 클릭 시 중간선
+function checkToDo(e) {    //체크박스 클릭 시 중간선, 재클릭 시 복원
     const todo = e.target.nextSibling;
     if (e.target.checked) {
         todo.style.textDecorationLine = "line-through";
-        todo.style.color = "#97999b";
+        todo.style.color = "#b9b9b9";
     } else {
         todo.style.textDecorationLine = "none";
         todo.style.color = "black";
